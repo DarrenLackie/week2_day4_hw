@@ -22,12 +22,9 @@ class Room:
         else:
             return
         
-    def take_payment_for_room_entry_fee(self, input_room, input_guest):
-        if self.customer_can_afford_entry(input_room, input_guest):
-            self.till += input_room.entry_fee
-        
-    def customer_can_afford_entry(self, input_guest, input_room):
-        return input_guest.sufficient_funds(input_room.entry_fee)
+    def take_payment_for_room_entry_fee(self, input_guest):
+        if input_guest.sufficient_funds(self):
+            self.till += self.entry_fee
 
         
     
