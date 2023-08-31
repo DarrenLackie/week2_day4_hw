@@ -17,6 +17,7 @@ class TestRoom(unittest.TestCase):
         self.guest5 = Guest("poppy poppy")
         self.guest6 = Guest("jazzy jeff")
         self.room = Room("the hydro")
+        self.room2 = Room("liquid room")
 
     def test_room_has_same_name(self):
         self.assertEqual("the hydro", self.room.name)
@@ -33,3 +34,13 @@ class TestRoom(unittest.TestCase):
     def test_room_can_add_song(self):
         self.room.add_song(self.song1)
         self.assertEqual(self.song1, self.room.songs[0])
+
+    def test_room_capacity(self):
+        self.room.check_room_capacity(self.guest1)
+        self.room.check_room_capacity(self.guest2)
+        self.room.check_room_capacity(self.guest3)
+        self.room.check_room_capacity(self.guest4)
+        self.assertEqual(self.guest1, self.room.guests[0])
+        self.assertEqual(self.guest2, self.room.guests[1])
+        self.assertEqual(self.guest3, self.room.guests[2])
+        # self.assertEqual(self.guest4, self.room.guests[3])
