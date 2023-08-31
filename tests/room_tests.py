@@ -10,12 +10,15 @@ class TestRoom(unittest.TestCase):
         self.song1 = Song("shania twain", "man i feel like a woman")
         self.song2 = Song("s club 7", "reach")
         self.song3 = Song("steps", "5, 6, 7, 8")
-        self.guest1 = Guest("hip hop harry", 20)
-        self.guest2 = Guest("rocky richard", 10)
-        self.guest3 = Guest("bluesy bob", 15)
-        self.guest4 = Guest("indie ian", 50)
-        self.guest5 = Guest("poppy poppy", 17)
-        self.guest6 = Guest("jazzy jeff", 25)
+        self.song4 = Song("house of pain", "jump around")
+        self.song5 = Song("the blues brothers", "gimme some lovin'")
+        self.song6 = Song("george michael", "faith")
+        self.guest1 = Guest("hip hop harry", 20, "jump around")
+        self.guest2 = Guest("rocky richard", 10, "enter sandman")
+        self.guest3 = Guest("bluesy bob", 15, "gimme some lovin'")
+        self.guest4 = Guest("indie ian", 50, "mr brightside")
+        self.guest5 = Guest("poppy poppy", 17, "5, 6, 7, 8")
+        self.guest6 = Guest("jazzy jeff", 25, "man i feel like a woman")
         self.room = Room("the hydro", 100, 10)
         self.room2 = Room("liquid room", 100, 5)
 
@@ -43,7 +46,7 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(self.guest1, self.room.guests[0])
         self.assertEqual(self.guest2, self.room.guests[1])
         self.assertEqual(self.guest3, self.room.guests[2])
-        # self.assertEqual(self.guest4, self.room.guests[3])
+        # self.assertEqual(self.guest4, self.room.guests[3]) #fails, too many people in room
 
     def test_take_payment_for_room(self):
         self.room.take_payment_for_room_entry_fee(self.guest1)
